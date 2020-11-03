@@ -28,9 +28,9 @@
     "stylelint-webpack-plugin": "1.2.3"
   },
   "dependencies": {
-    "@testing-library/jest-dom": "4.2.4",
-    "@testing-library/react": "9.4.1",
-    "@testing-library/user-event": "7.2.1",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.9",
     "axios": "0.19.2",
     "classnames": "2.2.6",
     "connected-react-router": "6.4.0",
@@ -52,5 +52,7 @@
     "regenerator-runtime": "0.13.2",
     "transitionEnd": "1.0.2"
   },
-  "browserslist": ["defaults"]
+  "browserslist": [
+    "defaults"
+  ]
 }

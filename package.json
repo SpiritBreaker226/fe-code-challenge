@@ -53,7 +53,8 @@
     "redux-promise-middleware": "6.1.0",
     "redux-thunk": "2.3.0",
     "regenerator-runtime": "0.13.2",
-    "transitionEnd": "1.0.2"
+    "transitionEnd": "1.0.2",
+    "yup": "0.29.3"
   },
   "browserslist": [
     "defaults"

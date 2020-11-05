@@ -29,6 +29,7 @@ export default class SpotItem extends PureComponent {
             showDetails,
             isSelected,
             data: {
+                id,
                 image,
                 distance,
                 title
@@ -42,7 +43,10 @@ export default class SpotItem extends PureComponent {
         return (
             <div className={classes}>
                 <Image src={image} />
-                <div className="SpotItem-info">
+                <div
+                    className="SpotItem-info"
+                    data-testid={`spot-item-info-${id}`}
+                >
                     <h2>{title}</h2>
                     <p>{distance}</p>
                     {showDetails && <TextButton onClick={this._onDetailsClick}>Details</TextButton>}

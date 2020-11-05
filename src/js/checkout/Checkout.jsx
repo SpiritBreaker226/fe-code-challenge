@@ -3,12 +3,13 @@ import PropTypes from 'prop-types';
 
 import {connect} from 'react-redux';
 
-import {Formik, Field, Form, ErrorMessage} from 'formik';
+import {Formik, Form} from 'formik';
 import * as Yup from 'yup';
 
 import {push} from 'connected-react-router';
 
 import Button from '../common/Button';
+import Field from '../common/Field';
 import TextButton from '../common/TextButton';
 
 import SpotItem from '../spot/SpotItem';
@@ -61,39 +62,32 @@ const Checkout = ({selectedSpot, pushTo, onCheckout}) => {
                         }}
                     >
                         <Form>
-                            <label htmlFor="firstName">First Name</label>
                             <Field
                                 name="firstName"
                                 type="text"
+                                label="First Name"
                             />
-                            <ErrorMessage name="firstName" />
-                            <label htmlFor="lastName">Last Name</label>
+
                             <Field
                                 name="lastName"
                                 type="text"
-                            />
-                            <ErrorMessage name="lastName" />
-                            <label htmlFor="email">Email</label>
-                            <Field
-                                data-testid="purchase-spot-email"
-                                name="email"
-                                type="email"
-                            />
-                            <ErrorMessage
-                                name="email"
-                                data-testid="purchase-spot-email-error"
+                                label="Last Name"
                             />
 
-                            <label htmlFor="phone">Phone</label>
                             <Field
-                                data-testid="purchase-spot-phone"
+                                dataTestid="purchase-spot-email"
+                                name="email"
+                                type="email"
+                                label="Email"
+                            />
+
+                            <Field
+                                dataTestid="purchase-spot-phone"
                                 name="phone"
                                 type="phone"
+                                label="Phone"
                             />
-                            <ErrorMessage
-                                name="phone"
-                                data-testid="purchase-spot-phone-error"
-                            />
+
                             <Button
                                 data-testid="purchase-spot-submit"
                                 color="secondary"

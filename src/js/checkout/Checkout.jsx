@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 
 import {connect} from 'react-redux';
 
-import {useFormik} from 'formik';
+import {Formik, Field, Form, ErrorMessage} from 'formik';
+import * as Yup from 'yup';
 
 import {push} from 'connected-react-router';
 
@@ -14,41 +15,7 @@ import SpotItem from '../spot/SpotItem';
 
 import {purchase} from './checkout-actions';
 
-const validate = values => {
-    const errors = {};
-
-    if (!values.phone) {
-        errors.phone = 'Phone is Required';
-    } else if (!/^[0-9]{10}$/i.test(values.phone)) {
-        errors.phone = 'Please enter a valid phone number.';
-    }
-
-    if (!values.email) {
-        errors.email = 'Email is Required';
-    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-        errors.email = 'Please enter a valid email.';
-    }
-
-    return errors;
-};
-
 const Checkout = ({selectedSpot, pushTo, onCheckout}) => {
-    const formik = useFormik({
-        initialValues: {
-            firstName: '',
-            lastName: '',
-            email: '',
-            phone: '',
-        },
-        validate,
-        onSubmit: values => {
-            onCheckout(values);
-            pushTo('/confirmation');
-        },
-    });
-    const onFieldAction = type => (
-        (type === 'submit') ? formik.handleSubmit : formik.handleChange
-    );
     const isSpotSelected = (selectedSpot && Object.entries(selectedSpot).length > 0);
     const onBackToSearchClick = () => {
         pushTo('/');
@@ -73,53 +40,69 @@ const Checkout = ({selectedSpot, pushTo, onCheckout}) => {
 
             {
                 isSpotSelected ?
-                    <form onSubmit={onFieldAction('submit')}>
-                        <label htmlFor="firstName">First Name</label>
-                        <input
-                            id="firstName"
-                            name="firstName"
-                            type="text"
-                            onChange={onFieldAction('field')}
-                            value={formik.values.firstName}
-                        />
-                        {formik.errors.firstName ? <div>{formik.errors.firstName}</div> : null}
-                        <label htmlFor="lastName">Last Name</label>
-                        <input
-                            id="lastName"
-                            name="lastName"
-                            type="text"
-                            onChange={onFieldAction('field')}
-                            value={formik.values.lastName}
-                        />
-                        {formik.errors.lastName ? <div>{formik.errors.lastName}</div> : null}
-                        <label htmlFor="email">Email</label>
-                        <input
-                            id="email"
-                            name="email"
-                            type="text"
-                            data-testid="purchase-spot-email"
-                            onChange={onFieldAction('field')}
-                            value={formik.values.email}
-                        />
-                        {formik.errors.email ? <div data-testid="purchase-spot-email-error">{formik.errors.email}</div> : null}
-                        <label htmlFor="phone">Phone</label>
-                        <input
-                            id="phone"
-                            name="phone"
-                            type="text"
-                            data-testid="purchase-spot-phone"
-                            onChange={onFieldAction('field')}
-                            value={formik.values.phone}
-                        />
-                        {formik.errors.phone ? <div data-testid="purchase-spot-phone-error">{formik.errors.phone}</div> : null}
-                        <Button
-                            data-testid="purchase-spot-submit"
-                            color="secondary"
-                            type="submit"
-                        >
-                            Purchase for ${(selectedSpot.price / 100).toFixed(2)}
-                        </Button>
-                    </form>
+                    <Formik
+                        initialValues={{
+                            firstName: '',
+                            lastName: '',
+                            email: '',
+                            phone: '',
+                        }}
+                        validationSchema={Yup.object({
+                            email: Yup.string().required('Email is required')
+                                .email('Please enter a valid email.'),
+                            phone: Yup.string()
+                                .required('Phone is required')
+                                .max(7, 'Please enter a valid phone number.')
+                                .max(10, 'Please enter a valid phone number.'),
+                        })}
+                        onSubmit={values => {
+                            onCheckout(values);
+                            pushTo('/confirmation');
+                        }}
+                    >
+                        <Form>
+                            <label htmlFor="firstName">First Name</label>
+                            <Field
+                                name="firstName"
+                                type="text"
+                            />
+                            <ErrorMessage name="firstName" />
+                            <label htmlFor="lastName">Last Name</label>
+                            <Field
+                                name="lastName"
+                                type="text"
+                            />
+                            <ErrorMessage name="lastName" />
+                            <label htmlFor="email">Email</label>
+                            <Field
+                                data-testid="purchase-spot-email"
+                                name="email"
+                                type="email"
+                            />
+                            <ErrorMessage
+                                name="email"
+                                data-testid="purchase-spot-email-error"
+                            />
+
+                            <label htmlFor="phone">Phone</label>
+                            <Field
+                                data-testid="purchase-spot-phone"
+                                name="phone"
+                                type="phone"
+                            />
+                            <ErrorMessage
+                                name="phone"
+                                data-testid="purchase-spot-phone-error"
+                            />
+                            <Button
+                                data-testid="purchase-spot-submit"
+                                color="secondary"
+                                type="submit"
+                            >
+                                Purchase for ${(selectedSpot.price / 100).toFixed(2)}
+                            </Button>
+                        </Form>
+                    </Formik>
                     :
                     <span>Select a Spot by going back to Search</span>
             }

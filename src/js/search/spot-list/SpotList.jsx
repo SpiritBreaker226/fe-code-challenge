@@ -1,5 +1,6 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
+
 import TextButton from '../../common/TextButton';
 import SpotItem from '../../spot/SpotItem';
 
@@ -7,11 +8,13 @@ export default class SpotList extends PureComponent {
     static propTypes = {
         selectedSpot: PropTypes.object,
         spots: PropTypes.arrayOf(PropTypes.object).isRequired,
-        setSpot: PropTypes.func.isRequired
+        setSpot: PropTypes.func.isRequired,
+        pushTo: PropTypes.func.isRequired,
     };
 
     _onDetailsClick = spot => {
         this.props.setSpot(spot);
+        this.props.pushTo('/checkout');
     }
 
     render() {

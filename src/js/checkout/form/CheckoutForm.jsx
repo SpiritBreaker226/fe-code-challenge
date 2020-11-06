@@ -27,12 +27,12 @@ const CheckoutForm = ({selectedSpot, pushTo, onCheckout}) => {
                 phone: '',
             }}
             validationSchema={Yup.object({
-                email: Yup.string().required('Email is required')
+                email: Yup.string()
+                    .required('Email is required')
                     .email('Please enter a valid email.'),
                 phone: Yup.string()
                     .required('Phone is required')
-                    .max(7, 'Please enter a valid phone number.')
-                    .max(10, 'Please enter a valid phone number.'),
+                    .length(12, 'Please enter a valid phone number.'),
             })}
             onSubmit={async values => {
                 try {

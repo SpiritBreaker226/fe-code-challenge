@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {useField} from 'formik';
+import classNames from 'classnames';
 
 const Field = ({
     label,
@@ -8,21 +9,40 @@ const Field = ({
     ...props
 }) => {
     const [field, meta] = useField(props);
+    const hasError = meta.touched && meta.error;
 
     return (
         <>
-            <label htmlFor={props.id || props.name}>{label}</label>
+            <div
+                className={
+                    classNames(
+                        'field-label',
+                        {error: hasError},
+                    )
+                }
+            >
+                <label htmlFor={props.id || props.name}>{label}</label>
+            </div>
             <input
                 data-testid={`${dataTestid}`}
-                className="text-input"
+                className={
+                    classNames({
+                        'text-input': true,
+                        'text-input-error': hasError,
+                    })
+                }
                 {...field}
                 {...props}
             />
             {
-                meta.touched && meta.error ? (
+                hasError ? (
                     <div
                         data-testid={`${dataTestid}-error`}
-                        className="error"
+                        className={
+                            classNames({
+                                'error-text-container': true,
+                                error: hasError
+                            })}
                     >
                         {meta.error}
                     </div>

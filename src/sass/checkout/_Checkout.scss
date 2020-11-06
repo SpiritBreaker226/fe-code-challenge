@@ -1,3 +1,82 @@
 .Checkout {
-    //
+    width: 50%;
+    min-width: 290px;
+    margin: 40px auto;
+    border: 1px solid $color-dashboard;
+    border-radius: 8px;
+    background-color: $color-white;
+    text-align: left;
+    padding-bottom: 20px;
+
+    .checkout-content {
+        padding: 0 25px;
+    }
+
+    .checkout-header {
+        .checkout-nav {
+            border-radius: 8px 8px 0 0;
+            background-color: $color-shift;
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+
+        .checkout-nav-button {
+            color: $color-white;
+        }
+
+        .SpotItem {
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
+
+    .form {
+        padding-top: 9px;
+
+        .field-label {
+            padding: 14px 0;
+        }
+
+        .text-input {
+            padding: 4px 6px;
+            width: 100%;
+            min-height: 28px;
+            border-radius: 4px;
+            border: 0.5px solid $color-cement;
+
+            &:focus {
+                border: 0.5px solid $color-accelerate;
+                outline: $color-accelerate;
+            }
+        }
+
+        .text-input-error {
+            border: 0.5px solid $color-stop;
+            outline: $color-stop;
+        }
+
+        .error-text-container {
+            padding-top: 11px;
+            font-size: 12px;
+        }
+
+        .error {
+            color: $color-stop;
+        }
+
+        .submit-containter {
+            text-align: right;
+            padding-top: 22px;
+
+            .Button-secondary {
+                background-color: $color-accelerate;
+                color: $color-white;
+            }
+        }
+    }
+
+    .select-a-spot {
+        padding-top: 20px;
+        text-align: center;
+    }
 }

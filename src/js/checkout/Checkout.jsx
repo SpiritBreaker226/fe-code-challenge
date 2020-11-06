@@ -23,19 +23,26 @@ const Checkout = ({selectedSpot, pushTo, onCheckout}) => {
     };
 
     return (
-        <section className="checkout">
-            <header>
-                <nav className="checkout-nav">
-                    <TextButton onClick={onBackToSearchClick}>Back to Search</TextButton>
+        <section className="Checkout">
+            <header className="checkout-header">
+                <nav className="checkout-nav checkout-content">
+                    <TextButton
+                        className="checkout-nav-button"
+                        onClick={onBackToSearchClick}
+                    >
+                        &lt; Back to Search
+                    </TextButton>
                 </nav>
 
                 {
                     isSpotSelected &&
-                        <SpotItem
-                            data={selectedSpot}
-                            isSelected={false}
-                            showDetails={false}
-                        />
+                        <div className="checkout-content">
+                            <SpotItem
+                                data={selectedSpot}
+                                isSelected={false}
+                                showDetails={false}
+                            />
+                        </div>
                 }
             </header>
 
@@ -61,7 +68,7 @@ const Checkout = ({selectedSpot, pushTo, onCheckout}) => {
                             pushTo('/confirmation');
                         }}
                     >
-                        <Form>
+                        <Form className="form checkout-content">
                             <Field
                                 name="firstName"
                                 type="text"
@@ -88,17 +95,21 @@ const Checkout = ({selectedSpot, pushTo, onCheckout}) => {
                                 label="Phone"
                             />
 
-                            <Button
-                                data-testid="purchase-spot-submit"
-                                color="secondary"
-                                type="submit"
-                            >
+                            <div className="submit-containter">
+                                <Button
+                                    data-testid="purchase-spot-submit"
+                                    color="secondary"
+                                    type="submit"
+                                >
                                 Purchase for ${(selectedSpot.price / 100).toFixed(2)}
-                            </Button>
+                                </Button>
+                            </div>
                         </Form>
                     </Formik>
                     :
-                    <span>Select a Spot by going back to Search</span>
+                    <div className="select-a-spot">
+                        Select a Spot by going back to Search
+                    </div>
             }
         </section>
     );

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import {connect} from 'react-redux';
 
-import {Formik, Form} from 'formik';
+import {Formik, Form, Field as FormikField} from 'formik';
 import * as Yup from 'yup';
 
 import axios from 'axios';
@@ -14,6 +14,8 @@ import Button from '../../common/Button';
 import Field from '../../common/Field';
 
 import {purchase} from '../checkout-actions';
+
+import PhoneField from './PhoneField';
 
 const CheckoutForm = ({selectedSpot, pushTo, onCheckout}) => {
     const [errorMessage, setErrorMessage] = useState('');
@@ -80,11 +82,11 @@ const CheckoutForm = ({selectedSpot, pushTo, onCheckout}) => {
                         label="Email"
                     />
 
-                    <Field
-                        dataTestid="purchase-spot-phone"
+                    <FormikField
                         name="phone"
                         type="phone"
                         label="Phone"
+                        component={PhoneField}
                     />
 
                     <div className="submit-containter">

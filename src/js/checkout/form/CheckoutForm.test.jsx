@@ -50,7 +50,7 @@ describe('CheckoutForm', () => {
         expect(screen.queryByTestId('purchase-spot-email-error')).toHaveTextContent(
             /Required/i
         );
-        expect(screen.queryByTestId('purchase-spot-phone-error')).toHaveTextContent(
+        expect(screen.queryByTestId('phone-error')).toHaveTextContent(
             /Required/i
         );
 
@@ -64,13 +64,13 @@ describe('CheckoutForm', () => {
             /valid email/i
         );
 
-        fireEvent.change(screen.getByTestId('purchase-spot-phone'), {
-            target: {value: faker.name.jobTitle()},
+        fireEvent.change(screen.getByTestId('phone'), {
+            target: {value: faker.random.number(14)},
         });
 
-        await waitFor(elementToRender('purchase-spot-phone'));
+        await waitFor(elementToRender('phone'));
 
-        expect(screen.queryByTestId('purchase-spot-phone-error')).toHaveTextContent(
+        expect(screen.queryByTestId('phone-error')).toHaveTextContent(
             /valid phone number/i
         );
     });

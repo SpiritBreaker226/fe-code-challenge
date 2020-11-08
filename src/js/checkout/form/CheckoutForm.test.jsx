@@ -6,16 +6,14 @@ import {combineReducers, createStore} from 'redux';
 
 import faker from 'faker';
 
+import {elementToRender} from '../../helpers/helpers';
+
 import spot from '../../spot/spot-reducer';
 import checkout from '../checkout-reducer';
 
 import CheckoutForm from './CheckoutForm';
 
 describe('CheckoutForm', () => {
-    const elementToRender = testId => {
-        return () => screen.getByTestId(testId);
-    };
-
     let mockStore = null;
 
     beforeEach(() => {

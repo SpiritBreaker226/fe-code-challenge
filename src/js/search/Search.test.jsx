@@ -5,6 +5,8 @@ import {Provider} from 'react-redux';
 
 import axios from 'axios';
 
+import {elementToRender} from '../helpers/helpers';
+
 import spots from '../helpers/test_data_spots.json';
 
 import createStore from '../store/store';
@@ -15,10 +17,6 @@ jest.mock('axios');
 const mockedAxios = axios;
 
 describe('Search', () => {
-    const elementToRender = testId => {
-        return () => screen.queryByTestId(testId);
-    };
-
     beforeEach(async () => {
         const mockStore = createStore(
             {

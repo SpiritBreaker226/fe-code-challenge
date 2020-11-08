@@ -7,6 +7,7 @@ import {push} from 'connected-react-router';
 
 import {updateSelected} from '../spot/spot-actions';
 import SpotList from './spot-list/SpotList';
+import SpotDetails from '../spot/SpotDetails';
 
 const Search = ({
     selectedSpot,
@@ -20,9 +21,17 @@ const Search = ({
                 spots={spots}
                 selectedSpot={selectedSpot}
                 setSpot={setSpot}
-                pushTo={pushTo}
             />
-            <div className="Search-content" />
+            <div className="Search-content">
+                {
+                    selectedSpot &&
+                        <SpotDetails
+                            selectedSpot={selectedSpot}
+                            setSpot={setSpot}
+                            pushTo={pushTo}
+                        />
+                }
+            </div>
         </div>
     );
 };

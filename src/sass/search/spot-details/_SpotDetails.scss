@@ -1,0 +1,31 @@
+.SpotDetails {
+    width: 290px;
+    margin: 240px auto;
+    padding: 15px 17px 25px;
+    border: 1px solid $color-dashboard;
+    border-radius: 8px;
+    background-color: $color-white;
+    text-align: left;
+
+    @include breakpoint($breakpoint-lg) {
+        width: 500px;
+    }
+
+    .SpotDetails-main-title,
+    .SpotDetails-purchase-button-containter {
+        text-align: center;
+    }
+
+    .SpotDetails-nav {
+        text-align: right;
+        font-size: 16px;
+
+        .SpotDetails-close-button {
+            color: $color-black;
+        }
+    }
+
+    .SpotDetails-description {
+        margin: 20px;
+    }
+}

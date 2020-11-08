@@ -47,9 +47,19 @@ class Confirmation extends PureComponent {
         return (
             <div className="Confirmation">
                 <h1>Park it like its hot!</h1>
-                <p>You successfully purchased parking at <strong>{selectedSpot.title}</strong> for <strong>${(selectedSpot.price / 100).toFixed(2)}</strong>.</p>
+
+                <p>
+                    You successfully purchased parking at
+                    <strong> {selectedSpot.title}</strong> for
+                    <strong> {selectedSpot.price}</strong>.
+                </p>
+
                 <Image src={selectedSpot.image} />
-                <p>We emailed a receipt to <a href={`mailto:${email}`}>{email}</a>.</p>
+
+                <p>
+                    We emailed a receipt to <a href={`mailto:${email}`}>{email}</a>.
+                </p>
+
                 <Button
                     color="primary"
                     onClick={this._onPurchaseAnotherClick}

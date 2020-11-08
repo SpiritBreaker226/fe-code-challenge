@@ -96,8 +96,7 @@ const CheckoutForm = ({selectedSpot, pushTo, onCheckout}) => {
                             type="submit"
                             disabled={isSubmitting}
                         >
-                            Purchase for
-                            ${(selectedSpot.price / 100).toFixed(2)}
+                            Purchase for {selectedSpot.price}
                         </Button>
                     </div>
                 </Form>

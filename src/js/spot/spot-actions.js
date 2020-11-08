@@ -18,6 +18,8 @@ export const fetchSpot = spotId => async dispatch => {
         const res = await axios.get(`/spots/${spotId}`);
         const spot = res.data;
 
+        spot.price = `$${(spot.price / 100).toFixed(2)}`;
+
         dispatch(updateSelected(spot));
     } catch (error) {
         dispatch(updateSelected({error: error.message}));

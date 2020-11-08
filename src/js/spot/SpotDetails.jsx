@@ -47,7 +47,7 @@ const SpotDetails = ({selectedSpot, setSpot, pushTo}) => {
                                 color="primary"
                                 onClick={onClickPurchase}
                             >
-                                ${(selectedSpot.price / 100).toFixed(2)} | Book It!
+                                {selectedSpot.price} | Book It!
                             </Button>
                         </div>
                     </>

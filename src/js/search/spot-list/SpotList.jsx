@@ -12,7 +12,7 @@ export default class SpotList extends PureComponent {
     };
 
     _onDetailsClick = spot => {
-        this.props.setSpot(spot);
+        this.props.setSpot(spot.id);
     }
 
     render() {
@@ -42,7 +42,6 @@ export default class SpotList extends PureComponent {
                         );
                     })}
                 </div>
-
             </div>
         );
     }

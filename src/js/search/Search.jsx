@@ -7,7 +7,7 @@ import {motion, AnimatePresence} from 'framer-motion';
 
 import {push} from 'connected-react-router';
 
-import {updateSelected} from '../spot/spot-actions';
+import {fetchSpot} from '../spot/spot-actions';
 import SpotList from './spot-list/SpotList';
 import SpotDetails from '../spot/SpotDetails';
 
@@ -67,7 +67,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
-    setSpot: updateSelected,
+    setSpot: fetchSpot,
     pushTo: push,
 };
 

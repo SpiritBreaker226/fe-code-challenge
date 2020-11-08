@@ -20,6 +20,6 @@ export const fetchSpot = spotId => async dispatch => {
 
         dispatch(updateSelected(spot));
     } catch (error) {
-        console.error(error.messages);
+        dispatch(updateSelected({error: error.message}));
     }
 };

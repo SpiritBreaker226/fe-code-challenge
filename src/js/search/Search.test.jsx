@@ -77,4 +77,18 @@ describe('Search', () => {
             expect(screen.queryByTestId('spot-details')).not.toBeInTheDocument();
         });
     });
+
+    describe('on error from the server', () => {
+        it('should render an error message', async () => {
+            mockedAxios.get.mockRejectedValue(new Error('fake error message'));
+
+            fireEvent.click(screen.getByTestId('spot-item-details-button-1'));
+
+            await waitFor(elementToRender('spot-details'));
+
+            expect(
+                screen.getByText('fake error message', {exact: false})
+            ).toBeInTheDocument();
+        });
+    });
 });

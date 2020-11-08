@@ -28,21 +28,31 @@ const SpotDetails = ({selectedSpot, setSpot, pushTo}) => {
                 <h2 className="SpotDetails-main-title">Spot Details</h2>
             </header>
 
-            <div className="SpotDetails-description">
-                <h3 data-testid="spot-details-title">{selectedSpot.title}</h3>
+            {
+                selectedSpot.error ?
+                    <div className="SpotDetails-error">
+                        {selectedSpot.error}
+                    </div>
+                    :
+                    <>
+                        <div className="SpotDetails-description">
+                            <h3 data-testid="spot-details-title">{selectedSpot.title}</h3>
 
-                {selectedSpot.description}
-            </div>
+                            {selectedSpot.description}
+                        </div>
 
-            <div className="SpotDetails-purchase-button-containter">
-                <Button
-                    data-testid="spot-details-purchase"
-                    color="primary"
-                    onClick={onClickPurchase}
-                >
-                    ${(selectedSpot.price / 100).toFixed(2)} | Book It!
-                </Button>
-            </div>
+                        <div className="SpotDetails-purchase-button-containter">
+                            <Button
+                                data-testid="spot-details-purchase"
+                                color="primary"
+                                onClick={onClickPurchase}
+                            >
+                                ${(selectedSpot.price / 100).toFixed(2)} | Book It!
+                            </Button>
+                        </div>
+                    </>
+            }
+
         </section>
     );
 };

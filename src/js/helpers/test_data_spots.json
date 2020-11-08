@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "title": "Seven Lions - Valet",
+    "price": 1400,
+    "description": "Arrive at this location at 97 E Adams St. This is the Seven Lions valet stand operated by VPA. It is located in front of Starbucks on the south side of E Adams St. between S Michigan Ave. and S Wabash Ave. If you are using the SpotHero Mobile App, please refer to the 2nd picture for an annotated map.",
+    "distance": "0.1 mi",
+    "image": "https://res.cloudinary.com/spothero/image/upload/v1579704583/front-end/code-challenge/wkabs86wl5zwqaksb6fr.jpg"
+  },
+  {
+    "id": 2,
+    "title": "55 E Monroe St. - Garage",
+    "price": 1650,
+    "description": "Enter this location at 55 E Monroe St. This is the Park Monroe garage, operated by SP+. It is located on the south/right-hand side of E Monroe St. (a one-way street) between S Wabash Ave. and S Michigan Ave. You may also enter this location at its other entrance, 50 E Adams, between S Michigan Ave and S Wabash Ave.",
+    "distance": "390 ft",
+    "image": "https://res.cloudinary.com/spothero/image/upload/v1579704583/front-end/code-challenge/vlv2pdojzj3yf8bdtuft.jpg"
+  },
+  {
+    "id": 3,
+    "title": "124 S Wabash Ave. - Garage",
+    "price": 1500,
+    "description": "Enter this location at 124 S Wabash Ave. This is the Palmer House garage operated by ABM Parking. It is located on the west/right-hand side of S Wabash Ave St (a one-way street) between E Monroe St and E Adams St. It is just past the Corner Bakery and just before the main entrance of the Palmer House. Please note: The address 124 S. Wabash is for GPS purposes, this address will not be displayed above the garage entrance, look for a black and gold sign stating \"Parking\" in white print.",
+    "distance": "0.1 mi",
+    "image": "https://res.cloudinary.com/spothero/image/upload/v1579704583/front-end/code-challenge/gkcgzedhqojsrobzdvsa.jpg"
+  }
+]

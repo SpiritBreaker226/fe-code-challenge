@@ -1,0 +1,126 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search renders Search component 1`] = `
+<div
+  class="Search"
+  data-testid="search"
+>
+  <div
+    class="SpotList"
+  >
+    <div
+      class="SpotList-feature"
+    >
+      <div
+        class="SpotList-breadcrumbs"
+      >
+        <button
+          class="TextButton"
+          type="button"
+        >
+          Chicago
+        </button>
+         &gt; Millennium Park
+      </div>
+      <h1>
+        Millennium Park
+      </h1>
+      <p>
+        3
+         Spots Available
+      </p>
+    </div>
+    <div
+      class="SpotList-spots"
+    >
+      <div
+        class="SpotItem"
+        data-testid="spot-item-1"
+      >
+        <img
+          alt=""
+          class="Image"
+          src="https://res.cloudinary.com/spothero/image/upload/v1579704583/front-end/code-challenge/wkabs86wl5zwqaksb6fr.jpg"
+        />
+        <div
+          class="SpotItem-info"
+          data-testid="spot-item-info-1"
+        >
+          <h2>
+            Seven Lions - Valet
+          </h2>
+          <p>
+            0.1 mi
+          </p>
+          <button
+            class="TextButton"
+            data-testid="spot-item-details-button-1"
+            type="button"
+          >
+            Details
+          </button>
+        </div>
+      </div>
+      <div
+        class="SpotItem"
+        data-testid="spot-item-2"
+      >
+        <img
+          alt=""
+          class="Image"
+          src="https://res.cloudinary.com/spothero/image/upload/v1579704583/front-end/code-challenge/vlv2pdojzj3yf8bdtuft.jpg"
+        />
+        <div
+          class="SpotItem-info"
+          data-testid="spot-item-info-2"
+        >
+          <h2>
+            55 E Monroe St. - Garage
+          </h2>
+          <p>
+            390 ft
+          </p>
+          <button
+            class="TextButton"
+            data-testid="spot-item-details-button-2"
+            type="button"
+          >
+            Details
+          </button>
+        </div>
+      </div>
+      <div
+        class="SpotItem"
+        data-testid="spot-item-3"
+      >
+        <img
+          alt=""
+          class="Image"
+          src="https://res.cloudinary.com/spothero/image/upload/v1579704583/front-end/code-challenge/gkcgzedhqojsrobzdvsa.jpg"
+        />
+        <div
+          class="SpotItem-info"
+          data-testid="spot-item-info-3"
+        >
+          <h2>
+            124 S Wabash Ave. - Garage
+          </h2>
+          <p>
+            0.1 mi
+          </p>
+          <button
+            class="TextButton"
+            data-testid="spot-item-details-button-3"
+            type="button"
+          >
+            Details
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="Search-content"
+  />
+</div>
+`;

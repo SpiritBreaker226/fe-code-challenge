@@ -41,7 +41,10 @@ export default class SpotItem extends PureComponent {
         );
 
         return (
-            <div className={classes}>
+            <div
+                className={classes}
+                data-testid={`spot-item-${id}`}
+            >
                 <Image src={image} />
                 <div
                     className="SpotItem-info"
@@ -49,7 +52,15 @@ export default class SpotItem extends PureComponent {
                 >
                     <h2>{title}</h2>
                     <p>{distance}</p>
-                    {showDetails && <TextButton onClick={this._onDetailsClick}>Details</TextButton>}
+                    {
+                        showDetails &&
+                            <TextButton
+                                onClick={this._onDetailsClick}
+                                data-testid={`spot-item-details-button-${id}`}
+                            >
+                                Details
+                            </TextButton>
+                    }
                 </div>
             </div>
         );

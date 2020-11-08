@@ -18,7 +18,10 @@ const Search = ({
     pushTo
 }) => {
     return (
-        <div className="Search">
+        <div
+            className="Search"
+            data-testid="search"
+        >
             <SpotList
                 spots={spots}
                 selectedSpot={selectedSpot}

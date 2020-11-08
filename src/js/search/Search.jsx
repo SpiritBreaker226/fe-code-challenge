@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import {connect} from 'react-redux';
 
+import {motion, AnimatePresence} from 'framer-motion';
+
 import {push} from 'connected-react-router';
 
 import {updateSelected} from '../spot/spot-actions';
@@ -23,14 +25,23 @@ const Search = ({
                 setSpot={setSpot}
             />
             <div className="Search-content">
-                {
-                    selectedSpot &&
-                        <SpotDetails
-                            selectedSpot={selectedSpot}
-                            setSpot={setSpot}
-                            pushTo={pushTo}
-                        />
-                }
+                <AnimatePresence>
+                    {
+                        selectedSpot &&
+                            <motion.div
+                                key="SpotDetails"
+                                initial={{opacity: 0}}
+                                animate={{opacity: 1}}
+                                exit={{opacity: 0}}
+                            >
+                                <SpotDetails
+                                    selectedSpot={selectedSpot}
+                                    setSpot={setSpot}
+                                    pushTo={pushTo}
+                                />
+                            </motion.div>
+                    }
+                </AnimatePresence>
             </div>
         </div>
     );

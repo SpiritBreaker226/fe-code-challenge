@@ -11,6 +11,7 @@ const SpotDetails = ({selectedSpot, setSpot, pushTo}) => {
     return (
         <section
             className="SpotDetails"
+            key="SpotDetails"
             test-testid="spot-details"
         >
             <header>

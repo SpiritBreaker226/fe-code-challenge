@@ -13,4 +13,5 @@ $spot-list-width: 460px;
     left: $spot-list-width;
     width: calc(100vw - #{$spot-list-width});
     height: 100vh;
+    background-color: $color-fuel;
 }

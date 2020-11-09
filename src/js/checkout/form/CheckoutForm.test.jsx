@@ -6,12 +6,17 @@ import {combineReducers, createStore} from 'redux';
 
 import faker from 'faker';
 
+import axios from 'axios';
+
 import {elementToRender} from '../../helpers/helpers';
 
 import spot from '../../spot/spot-reducer';
 import checkout from '../checkout-reducer';
 
 import CheckoutForm from './CheckoutForm';
+
+jest.mock('axios');
+const mockedAxios = axios;
 
 describe('CheckoutForm', () => {
     let mockStore = null;
@@ -22,7 +27,7 @@ describe('CheckoutForm', () => {
             {
                 spot: {
                     selected: {
-                        id: faker.random.number(9),
+                        id: 1,
                         title: faker.lorem.lines(1),
                         price: faker.random.number(9999),
                         description: faker.lorem.paragraph(1),
@@ -71,5 +76,83 @@ describe('CheckoutForm', () => {
         expect(screen.queryByTestId('phone-error')).toHaveTextContent(
             /valid phone number/i
         );
+    });
+
+    describe('on submiting', () => {
+        it('should send data to the server and get a response code 201', async () => {
+            const email = faker.internet.email();
+            const phone = faker.phone.phoneNumber('+18177658269');
+
+            fireEvent.change(screen.getByTestId('purchase-spot-email'), {
+                target: {value: email},
+            });
+
+            await waitFor(elementToRender('purchase-spot-email'));
+
+            fireEvent.change(screen.getByTestId('phone'), {
+                target: {value: phone},
+            });
+
+            await waitFor(elementToRender('phone'));
+
+            mockedAxios.post.mockResolvedValueOnce();
+
+            fireEvent.click(screen.getByTestId('purchase-spot-submit'));
+
+            expect(screen.getByTestId('purchase-spot-submit'))
+                .toHaveAttribute('disabled');
+
+            await waitFor(elementToRender('purchase-spot-submit'));
+
+            expect(screen.getByTestId('purchase-spot-submit'))
+                .not
+                .toHaveAttribute('disabled');
+
+            expect(mockedAxios.post).toHaveBeenCalledTimes(1);
+            expect(mockedAxios.post).toHaveBeenCalledWith(
+                '/reservations', {
+                    firstName: '',
+                    lastName: '',
+                    email,
+                    phone,
+                    spotId: 1,
+                }
+            );
+        });
+    });
+
+    describe('when there is an error on submition', () => {
+        it('should render error message in the form', async () => {
+            const email = faker.internet.email();
+            const phone = faker.phone.phoneNumber('+18177658269');
+
+            fireEvent.change(screen.getByTestId('purchase-spot-email'), {
+                target: {value: email},
+            });
+
+            await waitFor(elementToRender('purchase-spot-email'));
+
+            fireEvent.change(screen.getByTestId('phone'), {
+                target: {value: phone},
+            });
+
+            await waitFor(elementToRender('phone'));
+
+            mockedAxios.post.mockRejectedValue(
+                new Error('Unable to purchase spot')
+            );
+
+            expect(screen.queryByTestId('purchase-spot-form-error'))
+                .not
+                .toBeInTheDocument();
+
+            fireEvent.click(screen.getByTestId('purchase-spot-submit'));
+
+            await waitFor(elementToRender('purchase-spot-submit'));
+
+            expect(
+                screen.getByText('Unable to purchase spot', {exact: false})
+            ).toBeInTheDocument();
+        });
     });
 });

@@ -68,7 +68,7 @@ describe('CheckoutForm', () => {
         );
 
         fireEvent.change(screen.getByTestId('phone'), {
-            target: {value: faker.random.number(14)},
+            target: {value: faker.random.number(14).toString()},
         });
 
         await waitFor(elementToRender('phone'));
@@ -76,49 +76,6 @@ describe('CheckoutForm', () => {
         expect(screen.queryByTestId('phone-error')).toHaveTextContent(
             /valid phone number/i
         );
-    });
-
-    describe('on submiting', () => {
-        it('should send data to the server and get a response code 201', async () => {
-            const email = faker.internet.email();
-            const phone = faker.phone.phoneNumber('+18177658269');
-
-            fireEvent.change(screen.getByTestId('purchase-spot-email'), {
-                target: {value: email},
-            });
-
-            await waitFor(elementToRender('purchase-spot-email'));
-
-            fireEvent.change(screen.getByTestId('phone'), {
-                target: {value: phone},
-            });
-
-            await waitFor(elementToRender('phone'));
-
-            mockedAxios.post.mockResolvedValueOnce();
-
-            fireEvent.click(screen.getByTestId('purchase-spot-submit'));
-
-            expect(screen.getByTestId('purchase-spot-submit'))
-                .toHaveAttribute('disabled');
-
-            await waitFor(elementToRender('purchase-spot-submit'));
-
-            expect(screen.getByTestId('purchase-spot-submit'))
-                .not
-                .toHaveAttribute('disabled');
-
-            expect(mockedAxios.post).toHaveBeenCalledTimes(1);
-            expect(mockedAxios.post).toHaveBeenCalledWith(
-                '/reservations', {
-                    firstName: '',
-                    lastName: '',
-                    email,
-                    phone,
-                    spotId: 1,
-                }
-            );
-        });
     });
 
     describe('when there is an error on submition', () => {

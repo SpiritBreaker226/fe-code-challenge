@@ -7,7 +7,7 @@ import Image from '../common/Image';
 
 class Confirmation extends PureComponent {
     static propTypes = {
-        email: PropTypes.string.isRequired,
+        email: PropTypes.string,
         selectedSpot: PropTypes.object,
         pushTo: PropTypes.func.isRequired
     };
@@ -45,7 +45,10 @@ class Confirmation extends PureComponent {
         }
 
         return (
-            <div className="Confirmation">
+            <div
+                className="Confirmation"
+                data-testid="confirmation"
+            >
                 <h1>Park it like its hot!</h1>
 
                 <p>
@@ -57,12 +60,19 @@ class Confirmation extends PureComponent {
                 <Image src={selectedSpot.image} />
 
                 <p>
-                    We emailed a receipt to <a href={`mailto:${email}`}>{email}</a>.
+                    We emailed a receipt to&nbsp;
+                    <a
+                        data-testid="confirmation-email"
+                        href={`mailto:${email}`}
+                    >
+                        {email}
+                    </a>.
                 </p>
 
                 <Button
                     color="primary"
                     onClick={this._onPurchaseAnotherClick}
+                    data-testid="confirmation-purchase-again"
                 >
                     Purchase Another Spot!
                 </Button>

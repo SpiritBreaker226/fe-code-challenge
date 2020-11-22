@@ -50,7 +50,7 @@ export default class SpotItem extends PureComponent {
                     className="SpotItem-info"
                     data-testid={`spot-item-info-${id}`}
                 >
-                    <h2>{title}</h2>
+                    <h2 data-testid={`spot-item-details-title-${id}`}>{title}</h2>
                     <p>{distance}</p>
                     {
                         showDetails &&

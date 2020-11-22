@@ -27,8 +27,10 @@ export default class SpotList extends PureComponent {
                     <div className="SpotList-breadcrumbs">
                         <TextButton>Chicago</TextButton> &gt; Millennium Park
                     </div>
-                    <h1>Millennium Park</h1>
-                    <p>{spots.length} Spots Available</p>
+                    <h1 data-testid="spot-list-main-title">Millennium Park</h1>
+                    <p data-testid="spot-list-spots-avaliable">
+                        {spots.length} Spots Available
+                    </p>
                 </div>
                 <div className="SpotList-spots">
                     {spots.map(spot => {

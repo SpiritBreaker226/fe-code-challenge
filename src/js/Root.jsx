@@ -45,7 +45,10 @@ export default class Root extends Component {
         }
 
         return (
-            <div className="Root">
+            <div
+                className="Root"
+                data-testid="root"
+            >
                 <Provider store={createStore()}>
                     <ConnectedRouter history={getHistory()}>
                         <App spots={spots} />

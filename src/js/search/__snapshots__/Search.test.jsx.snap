@@ -22,10 +22,14 @@ exports[`Search renders Search component 1`] = `
         </button>
          &gt; Millennium Park
       </div>
-      <h1>
+      <h1
+        data-testid="spot-list-main-title"
+      >
         Millennium Park
       </h1>
-      <p>
+      <p
+        data-testid="spot-list-spots-avaliable"
+      >
         3
          Spots Available
       </p>
@@ -46,7 +50,9 @@ exports[`Search renders Search component 1`] = `
           class="SpotItem-info"
           data-testid="spot-item-info-1"
         >
-          <h2>
+          <h2
+            data-testid="spot-item-details-title-1"
+          >
             Seven Lions - Valet
           </h2>
           <p>
@@ -74,7 +80,9 @@ exports[`Search renders Search component 1`] = `
           class="SpotItem-info"
           data-testid="spot-item-info-2"
         >
-          <h2>
+          <h2
+            data-testid="spot-item-details-title-2"
+          >
             55 E Monroe St. - Garage
           </h2>
           <p>
@@ -102,7 +110,9 @@ exports[`Search renders Search component 1`] = `
           class="SpotItem-info"
           data-testid="spot-item-info-3"
         >
-          <h2>
+          <h2
+            data-testid="spot-item-details-title-3"
+          >
             124 S Wabash Ave. - Garage
           </h2>
           <p>

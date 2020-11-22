@@ -46,7 +46,10 @@ const Checkout = ({selectedSpot, pushTo}) => {
                 isSpotSelected ?
                     <CheckoutForm />
                     :
-                    <div className="select-a-spot">
+                    <div
+                        className="select-a-spot"
+                        data-testid="purchase-spot-select-spot"
+                    >
                         Select a Spot by going back to Search
                     </div>
             }
